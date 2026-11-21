@@ -15,7 +15,7 @@ import DocsNav from "@/components/DocsNav.vue";
     background: var(--surface);
     margin-right: 16px;
     display: none;
-    width: 300px;
+    width: 280px;
   }
   @media (min-width: 720px) {
     aside {

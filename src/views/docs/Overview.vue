@@ -18,7 +18,8 @@ import Section from "@/components/Section.vue";
   
       <h3> Public interfaces </h3>
       <CodeBlock title="Dye" lang="js" code="Dye.render('<!fg:red>Error<!>s')" />
-      <p>Parse markup and render styled text</p>
+      <p>Parse markup and render styled]
+         text</p>
   
       <CodeBlock title="Ink" lang="js" code="Ink.red('Error')" />
       <p>Chain colors and effects, then render text</p>

@@ -32,19 +32,9 @@
       <UserStarIcon color="currentColor" />
     </Anchor>
 
-    <Anchor :no-style="true" @click="panel.close" href="https://github.com/MahdiDevRoom">
+    <Anchor :no-style="true" @click="panel.close" href="https://github.com/MahdiDevRoom" target="_blank">
       Github
       <GithubIcon color="currentColor" />
-    </Anchor>
-
-    <Anchor :no-style="true" @click="panel.close" href="https://www.instagram.com/DevRoomGram">
-      Instagram
-      <InstagramIcon color="currentColor" />
-    </Anchor>
-
-    <Anchor :no-style="true" @click="panel.close" href="https://t.me/MahdiDevChannel">
-      Telegram
-      <TelegrameIcon color="currentColor" />
     </Anchor>
 
   </nav>
@@ -90,7 +80,7 @@
 
       &:active {
         opacity: 0.7;
-        scale: 0.9;
+        scale: 1 0.9;
       }
     }
   }

@@ -1,6 +1,11 @@
 <script setup>
+  import { computed } from "vue";
+  import { useRoute } from "vue-router";
   import { usePanelStore } from "@/stores/usePanelStore";
   import Anchor from "@/widgets/Anchor.vue";
+  const route = useRoute();
+
+  const path = computed(() => route.path)
 
   const list = [
     { link: "/docs/overview", name: "Overview" },
@@ -25,9 +30,10 @@
 
 <template>
   <nav aria-label="Documentation table of contents">
-    <Anchor v-for="(anchor, index) in list" :no-style="true" @click="panel.close" :to="anchor.link">
-      <div class="index"> {{ index + 1 }} </div>
-      <div class="title"> {{ anchor.name }} </div>
+    <Anchor v-for="(anchor, index) in list" :class="{ current: anchor.link == path }" :no-style="true"
+      @click="panel.close" :to="anchor.link">
+      <div class="title"> <span v-if="anchor.link == path" class="symbol"></span> {{ index + 1 }} - {{ anchor.name }}
+      </div>
     </Anchor>
   </nav>
 </template>
@@ -40,42 +46,46 @@
     gap: 8px;
 
     &>* {
+      --color: var(--secondary);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 32px;
       gap: 8px;
 
-      .index {
-        aspect-ratio: 1;
-        height: 100%;
-        display: grid;
-        place-items: center;
-        color: var(--secondary);
-        background: var(--surface-highest);
-        border-radius: 4px;
+      &.current {
+        --color: var(--primary);
       }
 
       .title {
         flex-grow: 1;
-        padding-inline: 16px;
+        gap: 8px;
+        padding: 8px;
         background: var(--surface-highest);
         border-radius: 4px;
-        border-left: 4px solid var(--secondary);
+        border-left: 4px solid var(--color);
         height: 100%;
         display: flex;
         justify-content: start;
         align-items: center;
         transition: 250ms;
 
+
         &:hover {
-          color: var(--secondary);
+          color: var(--color);
           border-left-width: 12px;
         }
 
         &:active {
           opacity: 0.7;
-          scale: 0.9;
+          scale: 1 0.9;
+        }
+
+        .symbol {
+          aspect-ratio: 1;
+          width: 32px;
+          display: block;
+          background: var(--color);
+          border-radius: 16px;
         }
       }
     }
