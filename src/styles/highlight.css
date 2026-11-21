@@ -1,0 +1,26 @@
+.tok-token        { color: var(--on-surface) }
+
+.tok-keyword      { color: var(--error); font-weight: 500 }
+.tok-operator     { color: var(--error) }
+.tok-tag          { color: var(--error) }
+.tok-heading      { color: var(--error); font-weight: 500 }
+
+.tok-string       { color: var(--secondary) }
+.tok-code-inline  { color: var(--secondary) }
+.tok-inserted     { color: var(--secondary) }
+.tok-link         { color: var(--secondary); text-decoration: underline }
+
+.tok-number       { color: var(--error) }
+.tok-literal      { color: var(--error) }
+.tok-variable     { color: var(--error); font-style: italic }
+.tok-deleted      { color: var(--error); text-decoration: line-through }
+
+.tok-function     { color: var(--secondary); font-weight: 500 }
+.tok-command      { color: var(--secondary); font-weight: 500 }
+.tok-selector     { color: var(--secondary) }
+.tok-type         { color: var(--on-surface); font-weight: 500 }
+.tok-property     { color: var(--primary) }
+.tok-attr         { color: var(--primary); font-style: italic }
+
+.tok-comment      { color: var(--outline-high); font-style: italic }
+.tok-meta         { color: var(--outline-high) }

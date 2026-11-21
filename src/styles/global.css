@@ -1,0 +1,52 @@
+@font-face {
+  font-family: "JosefinSlab";
+  src: url(assets/fonts/JosefinSlab.ttf);
+}
+
+@font-face {
+  font-family: "GoogleSansCode";
+  src: url(assets/fonts/GoogleSansCode.ttf);
+}
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+  corner-shape: bevel;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+  
+  --font-size: 18px;
+  --app-font: "JosefinSlab";
+  --mono-font: "GoogleSansCode";
+}
+
+*::-webkit-scrollbar {
+  display: none
+}
+
+*::selection {
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+}
+
+.freeze:not(.no-freeze),
+.freeze *:not(.no-freeze),
+.freeze *:not(.no-freeze)::before,
+.freeze *:not(.no-freeze)::after {
+  transition: none !important;
+  animation: none !important;
+}
+
+body {
+  font-family: var(--app-font);
+  padding: 0;
+  margin: 0;
+  background: var(--surface);
+  color: var(--on-surface);
+  line-height: 1.4;
+  font-weight: 900;
+}
+
+code {
+  font-family: var(--mono-font);
+}
