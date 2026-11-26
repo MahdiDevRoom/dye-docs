@@ -1,35 +1,40 @@
 <script setup>
-  import { computed, onBeforeUnmount, onMounted, watch } from "vue";
+  import { computed, onBeforeUnmount, onMounted } from "vue";
   import { useRoute } from "vue-router";
   import { usePanelStore } from "@/stores/usePanelStore";
-  import DocsNav from "@/components/DocsNav.vue";
-  import Wave from "@/widgets/Wave.vue";
-  import Nav from "@/components//Nav.vue";
+  import Nav from "@/components/Nav.vue";
+  import Wave from "@/components/Wave.vue";
+  import Lessons from "@/components/Lessons.vue";
 
   const panel = usePanelStore();
-
   const route = useRoute();
-  const isDocs = computed(() => route.matched.some((r) => r.name === "docs"));
-
   const onScroll = () => panel.close();
+
+  const DocsRoute = computed(() => route.matched.some((r) => r.name === "docs"))
 
   onMounted(() => window.addEventListener("scroll", onScroll, { passive: true }));
   onBeforeUnmount(() => window.removeEventListener("scroll", onScroll));
 </script>
 
 <template>
-  <div id="panel" :class="{ active: panel.panel }">
+  <div class="panel" :class="{ active: panel.panel }">
     <div @click="panel.close" class="bg"></div>
     <div class="fg">
-      <Nav />
-      <Wave v-if="isDocs" />
-      <DocsNav v-if="isDocs" />
+      <Nav class="nav" @click="panel.close" as="div" #default="{ item }">
+        <div class="button" :class="{ current: item.current }">
+          <span> {{ item.label }} </span>
+          <component :is="item.icon" size="24px" />
+        </div>
+      </Nav>
+      <Wave v-if="DocsRoute"/>
+      <Lessons v-if="DocsRoute"/>
     </div>
   </div>
 </template>
 
-<style>
-  #panel {
+<style scoped>
+  .panel {
+    position: absolute;
 
     .bg {
       position: fixed;
@@ -75,8 +80,47 @@
     }
   }
 
+  .nav {
+    padding: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+
+    .button {
+      --color: var(--secondary);
+      background: var(--surface-highest);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px;
+      border-radius: 4px;
+      border-left: 4px solid var(--color);
+      font-size: var(--tg-size-body-large);
+      font-weight: var(--tg-weight-title);
+
+      transition: 250ms;
+
+      &:hover {
+        color: var(--color);
+        border-left: 12px solid var(--color);
+      }
+
+      &:active {
+        opacity: 0.7;
+        scale: 1 0.9;
+      }
+
+      &.current {
+        background: var(--primary-container);
+        color: var(--on-primary-container);
+        --color: var(--primary);
+      }
+    }
+  }
+
+
   @media (min-width: 720px) {
-    #panel {
+    .panel {
       display: none;
     }
   }

@@ -1,13 +1,12 @@
 <script setup>
   import { RouterView } from "vue-router";
-  import { useTheme } from "@/composables/useTheme";
   import { useStatusbarStore } from "@/stores/useStatusbarStore";
-
-  const statusbar = useStatusbarStore();
-  statusbar.set("surface")
+  import { useTheme } from "@/composables/useTheme";
+ 
+  useStatusbarStore().set("surface");
   useTheme();
 </script>
 
 <template>
-  <RouterView/>
+  <RouterView />
 </template>

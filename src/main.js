@@ -5,9 +5,6 @@ import piniaPersist from "pinia-plugin-persistedstate";
 import App from "@/App.vue";
 import router from "@/router";
 
-import "@/styles/theme.css";
-import "@/styles/typography.css";
-import "@/styles/highlight.css";
 import "@/styles/global.css";
 
 const app = createApp(App);

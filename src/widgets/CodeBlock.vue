@@ -1,5 +1,5 @@
 <script setup>
-  import { CopyIcon } from "@lucide/vue";
+  import { CopyIcon, XIcon, CheckIcon } from "@lucide/vue";
   import Button from "@/widgets/Button.vue";
   import { useHighlight } from "@/composables/useHighlight";
 
@@ -12,7 +12,26 @@
   })
 
   const lines = useHighlight(() => props.code, () => props.lang);
-  const copy = () => navigator.clipboard.writeText(props.code);
+
+  const status = ref("idle");
+  let timer;
+
+  const icon = computed(() => ({
+    idle: CopyIcon,
+    copied: CheckIcon,
+    failed: XIcon,
+  })[status.value]);
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(props.code ?? "");
+      status.value = "copied";
+    } catch {
+      status.value = "failed";
+    }
+    clearTimeout(timer);
+    timer = setTimeout(() => (status.value = "idle"), 2000);
+  };
 </script>
 
 <template>

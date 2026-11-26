@@ -1,74 +1,99 @@
+/* --- Typography -------------------------------------- */
+:root {
+  --tg-size-display-large: calc(var(--font-size) + 44px);
+  --tg-size-display:       calc(var(--font-size) + 32px);
+  --tg-size-display-small: calc(var(--font-size) + 24px);
+  --tg-size-headline-larg: calc(var(--font-size) + 18px);
+  --tg-size-headline:      calc(var(--font-size) + 14px);
+  --tg-size-headline-small: calc(var(--font-size) + 12px);
+  --tg-size-title-large:   calc(var(--font-size) + 10px);
+  --tg-size-title:         calc(var(--font-size) + 8px);
+  --tg-size-title-small:   calc(var(--font-size) + 4px);
+  --tg-size-body-large:    calc(var(--font-size) + 2px);
+  --tg-size-body:          calc(var(--font-size) + 0px);
+  --tg-size-body-small:    calc(var(--font-size) - 2px);
+  --tg-size-label-large:   calc(var(--font-size) - 0px);
+  --tg-size-label:         calc(var(--font-size) - 2px);
+  --tg-size-label-small:   calc(var(--font-size) - 3px);
+
+  --tg-weight-display:  900;
+  --tg-weight-headline: 800;
+  --tg-weight-title:    700;
+  --tg-weight-body:     400;
+  --tg-weight-label:    600;
+}
+
 .tg-display-large {
-  font-size: calc(var(--font-size, 14px) + 44px);
-  font-weight: 900;
+  font-size:   var(--tg-size-display-large);
+  font-weight: var(--tg-weight-display);
 }
 
 .tg-display {
-  font-size: calc(var(--font-size, 14px) + 32px);
-  font-weight: 900;
+  font-size:   var(--tg-size-display);
+  font-weight: var(--tg-weight-display);
 }
 
 .tg-display-small {
-  font-size: calc(var(--font-size, 14px) + 24px);
-  font-weight: 900;
+  font-size:   var(--tg-size-display-small);
+  font-weight: var(--tg-weight-display);
 }
 
 .tg-headline-larg {
-  font-size: calc(var(--font-size, 14px) + 18px);
-  font-weight: 800;
+  font-size:   var(--tg-size-headline-larg);
+  font-weight: var(--tg-weight-headline);
 }
 
 .tg-headline {
-  font-size: calc(var(--font-size, 14px) + 14px);
-  font-weight: 800;
+  font-size:   var(--tg-size-headline);
+  font-weight: var(--tg-weight-headline);
 }
 
-.tg-headline-smal {
-  font-size: calc(var(--font-size, 14px) + 12px);
-  font-weight: 800;
+.tg-headline-small {
+  font-size:   var(--tg-size-headline-small);
+  font-weight: var(--tg-weight-headline);
 }
 
 .tg-title-large {
-  font-size: calc(var(--font-size, 14px) + 10px);
-  font-weight: 700;
+  font-size:   var(--tg-size-title-large);
+  font-weight: var(--tg-weight-title);
 }
 
 .tg-title {
-  font-size: calc(var(--font-size, 14px) + 8px);
-  font-weight: 700;
+  font-size:   var(--tg-size-title);
+  font-weight: var(--tg-weight-title);
 }
 
 .tg-title-small {
-  font-size: calc(var(--font-size, 14px) + 4px);
-  font-weight: 700;
+  font-size:   var(--tg-size-title-small);
+  font-weight: var(--tg-weight-title);
 }
 
 .tg-body-large {
-  font-size: calc(var(--font-size, 14px) + 2px);
-  font-weight: 500;
+  font-size:   var(--tg-size-body-large);
+  font-weight: var(--tg-weight-body);
 }
 
 .tg-body {
-  font-size: calc(var(--font-size, 14px) + 0px);
-  font-weight: 500;
+  font-size:   var(--tg-size-body);
+  font-weight: var(--tg-weight-body);
 }
 
 .tg-body-small {
-  font-size: calc(var(--font-size, 14px) - 2px);
-  font-weight: 500;
+  font-size:   var(--tg-size-body-small);
+  font-weight: var(--tg-weight-body);
 }
 
 .tg-label-large {
-  font-size: calc(var(--font-size, 14px) - 0px);
-  font-weight: 600;
+  font-size:   var(--tg-size-label-large);
+  font-weight: var(--tg-weight-label);
 }
 
 .tg-label {
-  font-size: calc(var(--font-size, 14px) - 2px);
-  font-weight: 600;
+  font-size:   var(--tg-size-label);
+  font-weight: var(--tg-weight-label);
 }
 
 .tg-label-small {
-  font-size: calc(var(--font-size, 14px) - 4px);
-  font-weight: 600;
+  font-size:   var(--tg-size-label-small);
+  font-weight: var(--tg-weight-label);
 }

@@ -1,67 +1,44 @@
-import { ref, watchEffect, onMounted, onUnmounted } from "vue";
 import { useThemeStore } from "@/stores/useThemeStore";
 import { useStatusbarStore } from "@/stores/useStatusbarStore";
+import { storeToRefs } from "pinia";
+import { computed, onMounted, onUnmounted, ref, watch } from "vue";
 
 export function useTheme() {
   const themeStore = useThemeStore();
   const statusbarStore = useStatusbarStore();
+  const { statusbar } = storeToRefs(statusbarStore);
 
-  const getSysTheme = () => {
-    if (typeof window === "undefined") return null;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  }
+  const getSysTheme = () =>
+    window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
   const sysTheme = ref(getSysTheme());
 
+  const resolvedTheme = computed(() =>
+    themeStore.theme === "auto" ? sysTheme.value : themeStore.theme
+  );
+
   let mql = null;
-  const handler = (e) => sysTheme.value = e.matches ? "dark" : "light";
+  const handler = (e) => (sysTheme.value = e.matches ? "dark" : "light");
 
   onMounted(() => {
-    if (typeof window === "undefined") return;
     mql = window.matchMedia("(prefers-color-scheme: dark)");
     mql.addEventListener("change", handler);
   });
 
-  onUnmounted(() => {
-    mql?.removeEventListener("change", handler);
-  });
+  onUnmounted(() => mql?.removeEventListener("change", handler));
 
-  watchEffect(() => {
-    if (typeof document === "undefined") return;
-    document.documentElement.setAttribute("data-theme", themeStore.theme);
-  }, { flush: "sync" });
-
-  watchEffect(() => {
-    themeStore.theme;
-    sysTheme.value;
-
-    if (typeof document === "undefined") return;
-    const root = document.documentElement;
-
-    root.classList.add("freeze");
-    const id = requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove("freeze")));
-
-    return () => {
-      cancelAnimationFrame(id);
-      root.classList.remove("freeze");
-    }
-  }, { flush: "post" });
-
-  watchEffect(() => {
-    themeStore.theme;
-    sysTheme.value;
-
-    if (!statusbarStore.statusbar || typeof document === "undefined") return;
+  const applyThemeColor = (color) => {
+    if (!color) return;
 
     const probe = document.createElement("div");
-    probe.style.color = `var(--${statusbarStore.statusbar})`;
+    probe.style.color = `var(--${color})`;
     probe.style.display = "none";
     document.body.appendChild(probe);
 
-    const color = getComputedStyle(probe).color;
+    const resolve = getComputedStyle(probe).color;
     document.body.removeChild(probe);
 
-    if (!color) return;
+    if (!resolve) return;
 
     let meta = document.querySelector("meta[name='theme-color']");
     if (!meta) {
@@ -70,6 +47,28 @@ export function useTheme() {
       document.head.appendChild(meta);
     }
 
-    meta.setAttribute("content", color);
-  }, { flush: "post"});
+    meta.setAttribute("content", resolve);
+  };
+
+  watch(
+    [resolvedTheme, statusbar],
+    ([newTheme, newStatusbar]) => {
+      const root = document.documentElement;
+
+      root.setAttribute("data-theme", newTheme);
+
+      applyThemeColor(newStatusbar);
+
+      root.classList.add("freeze");
+      const id = requestAnimationFrame(() =>
+        requestAnimationFrame(() => root.classList.remove("freeze"))
+      );
+
+      return () => {
+        cancelAnimationFrame(id);
+        root.classList.remove("freeze");
+      };
+    },
+    { flush: "post", immediate: true }
+  );
 }

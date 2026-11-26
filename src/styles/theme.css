@@ -1,10 +1,10 @@
-* {
-    /* Scheme */
+:root {
+    /* --- Scheme -------------------------------------- */
     &[data-theme="auto"] { color-scheme: light dark }
     &[data-theme="light"] { color-scheme: light }
     &[data-theme="dark"] { color-scheme: dark }
 
-    /* Light */
+    /* --- Light --------------------------------------- */
     --primary-light:                hsl(30 70% 35%);
     --on-primary-light:             hsl(30 70% 100%);
     --primary-container-light:      hsl(30 70% 80%);
@@ -34,7 +34,7 @@
     --outline-light:                hsl(30 50% 65%);
     --outline-high-light:           hsl(30 50% 55%);
     
-    /* Dark */
+    /* --- Dark ---------------------------------------- */
     --primary-dark:                 hsl(30 70% 70%);
     --on-primary-dark:              hsl(30 70% 15%);
     --primary-container-dark:       hsl(30 70% 20%);
@@ -64,7 +64,7 @@
     --outline-dark:                 hsl(30 50% 35%);
     --outline-high-dark:            hsl(30 50% 50%);
     
-    /* Auto */
+    /* --- Auto ---------------------------------------- */
     --primary:                light-dark(var(--primary-light),                var(--primary-dark));
     --on-primary:             light-dark(var(--on-primary-light),             var(--on-primary-dark));
     --primary-container:      light-dark(var(--primary-container-light),      var(--primary-container-dark));

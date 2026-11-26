@@ -1,34 +1,55 @@
+/* --- Imports ----------------------------------------- */
+@import url(theme.css);
+@import url(typography.css);
+@import url(highlights.css);
+
+/* --- Fonts ------------------------------------------- */
 @font-face {
-  font-family: "JosefinSlab";
-  src: url(assets/fonts/JosefinSlab.ttf);
+  font-family: "RobotoSerif";
+  src: url(assets/fonts/RobotoSerif.ttf);
+  font-display: swap;
 }
 
 @font-face {
-  font-family: "GoogleSansCode";
-  src: url(assets/fonts/GoogleSansCode.ttf);
+  font-family: "RobotoMono";
+  src: url(assets/fonts/RobotoMono.ttf);
+  font-display: swap;
 }
 
+/* --- Root -------------------------------------------- */
+:root {
+  --font-size: 16px;
+  --app-font: "RobotoSerif", serif;
+  --mono-font: "RobotoMono", monospace;
+
+  scroll-behavior: smooth;
+  font-family: var(--app-font);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
+}
+
+/* --- Default ----------------------------------------- */
 * {
   box-sizing: border-box;
-  user-select: none;
   corner-shape: bevel;
   -webkit-user-drag: none;
   -webkit-tap-highlight-color: transparent;
-  
-  --font-size: 18px;
-  --app-font: "JosefinSlab";
-  --mono-font: "GoogleSansCode";
+
+  &::-webkit-scrollbar {
+    display: none
+  }
+
+  &::selection {
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+  }
 }
 
-*::-webkit-scrollbar {
-  display: none
-}
-
-*::selection {
-  background: var(--primary-container);
-  color: var(--on-primary-container);
-}
-
+/* --- Freeze ------------------------------------------ */
 .freeze:not(.no-freeze),
 .freeze *:not(.no-freeze),
 .freeze *:not(.no-freeze)::before,
@@ -37,16 +58,222 @@
   animation: none !important;
 }
 
+/* --- Body -------------------------------------------- */
 body {
-  font-family: var(--app-font);
   padding: 0;
   margin: 0;
   background: var(--surface);
   color: var(--on-surface);
-  line-height: 1.4;
-  font-weight: 900;
+  line-height: 1.5;
 }
 
-code {
-  font-family: var(--mono-font);
+/* --- App --------------------------------------------- */
+#app {
+  display: grid;
+  grid-template-rows: 1fr auto auto;
+  grid-template-areas: "main" "foot" "head";
+  min-height: 100vh;
+  transition: 250ms;
+}
+
+@media (min-width: 720px) {
+  #app {
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: "head" "main" "foot";
+  }
+}
+
+/* --- Header ------------------------------------------ */
+header {
+  grid-area: head;
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 72px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  background: var(--surface-high);
+  box-shadow: 0 0 0 2px var(--surface-highest);
+  padding: 12px;
+  gap: 8px;
+  z-index: 10;
+
+  .title {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: currentColor;
+    text-decoration: none;
+    gap: 12px;
+
+    .logo {
+      color: currentColor;
+      background: var(--surface-low);
+      border-radius: 10px;
+      border: 2px solid var(--surface-highest);
+    }
+  }
+
+  .nav {
+    display: none;
+    flex-direction: inherit;
+    gap: inherit;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 4px;
+    gap: 8px;
+  }
+}
+
+@media (min-width: 720px) {
+
+  header {
+    .nav {
+      display: flex;
+    }
+
+    button.panel {
+      display: none;
+    }
+  }
+}
+
+/* --- Main -------------------------------------------- */
+main {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  background-size: 10px 10px;
+  background-image: repeating-linear-gradient(45deg, var(--surface-high) 0, var(--surface-high) 2px, var(--surface) 0, var(--surface) 50%);
+}
+
+@media (min-width: 720px) {
+  main {
+    padding-inline: 64px;
+    min-height: 100vh;
+
+    &>* {
+      border-left: 2px solid var(--surface-highest);
+      border-right: 2px solid var(--surface-highest);
+    }
+  }
+}
+
+/* --- Aside ------------------------------------------- */
+aside {
+  grid-column: 1;
+  background: var(--surface);
+  margin-right: 16px;
+  display: none;
+  width: 280px;
+}
+
+@media (min-width: 720px) {
+  aside {
+    display: block;
+  }
+}
+
+/* --- Article ----------------------------------------- */
+article {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  overflow-x: hidden;
+  background: var(--surface);
+}
+
+/* --- Sections ---------------------------------------- */
+section {
+  padding: 16px 32px;
+  background: var(--surface);
+  flex-grow: 1;
+  width: 100%;
+  max-width: 840px;
+}
+
+/* --- Footer ------------------------------------------ */
+footer {
+  grid-area: foot;
+  padding: 32px;
+  background: var(--surface-low);
+  color: var(--on-surface-low);
+  border-top: 2px solid var(--surface-highest);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .wave {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* --- Table ------------------------------------------- */
+table {
+  border-radius: 14px;
+  border-spacing: 4px;
+  overflow: hidden;
+  width: 100%;
+  
+  thead {
+    th {
+      background: var(--surface-highest);
+    }
+  }
+  
+  td, th {
+    background: var(--surface);
+    box-shadow: 0 2px 0 var(--outline-low);
+    background: var(--surface-high);
+    border-radius: 4px;
+    padding: 8px;
+    overflow-x: scroll;
+    max-width: 180px;
+
+  }
+
+  tr {
+    &:first-child {
+
+      th, td {
+        &:first-child {
+          border-top-left-radius: 12px;
+          overflow-x: auto;
+        }
+      }
+      
+      th, td {
+        &:last-child {
+          border-top-right-radius: 12px;
+        }
+      }
+    }
+
+    &:last-child {
+
+      th, td {
+        &:first-child {
+          border-bottom-left-radius: 12px;
+        }
+      }
+
+      th, td {
+        &:last-child {
+          border-bottom-right-radius: 12px;
+        }
+      }
+    }
+  }
 }

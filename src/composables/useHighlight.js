@@ -7,7 +7,7 @@ export const highlighter = createHighlighter({
   languages: [shell, js],
 })
 
-const splitLines = (tokens) => {
+function splitLines(tokens) {
   const lines = [[]]
   for (const token of tokens) {
     token.value.split(/\r?\n/).forEach((part, i) => {
