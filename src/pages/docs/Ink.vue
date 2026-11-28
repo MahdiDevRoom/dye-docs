@@ -67,7 +67,7 @@
     <CodeBlock lang="js" :src="basic" />
 
     <Text as="h3" variant="title" shape shape-variant="secondary"> Calling it </Text>
-    <CodeBlock :header="false" lang="js" :src="signature" />
+    <CodeBlock :header="false" :numberbar="false" lang="js" :src="signature" />
     <ul>
       <li> <Code src="text" />: the text to style. </li>
       <li> <Code src="reset" />: defaults to <Code src="true" />, which adds a reset after the text. </li>
