@@ -36,8 +36,10 @@ const router = createRouter({
     }, 
     {  
       path: "/:pathMatch(.*)*",
-      name: "not-found",
-      component: ()=> import("@/layouts/NotFoundLayouts.vue"),
+      redirect: { path: "/not-found" },
+      children: [
+        { path: "/not-found", name: "not-found", component: ()=> import("@/pages/NotFound.vue"),}
+      ]
     },
   ],
   scrollBehavior(to, from, savedPosition) {

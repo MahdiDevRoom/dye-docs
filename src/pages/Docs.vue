@@ -2,8 +2,8 @@
   import Dye from "dye";
   import {
     BookOpenTextIcon, DownloadIcon, PackageIcon, RocketIcon,
-    CodeIcon, TagsIcon, PaletteIcon,
-    PlayIcon, LinkIcon, LayersIcon, WrenchIcon, BracesIcon,
+    CodeIcon, TagsIcon, SwatchBookIcon,
+    PlayIcon, LinkIcon, LayersIcon, WrenchIcon, ShieldCheckIcon,
     TriangleAlertIcon, LightbulbIcon,
   } from "@lucide/vue";
   import Card from "@/components/Card.vue";
@@ -28,7 +28,7 @@
       items: [
         { to: "/docs/markup", title: "Markup", icon: CodeIcon, text: "Tags, effects, and how styles accumulate." },
         { to: "/docs/aliases", title: "Aliases", icon: TagsIcon, text: "Short names like error, warning, info, and success." },
-        { to: "/docs/colors", title: "Colors", icon: PaletteIcon, text: "Named colors, RGB, and 256-color codes." },
+        { to: "/docs/colors", title: "Colors", icon: SwatchBookIcon, text: "Named colors, RGB, and 256-color codes." },
       ],
     },
     {
@@ -38,7 +38,7 @@
         { to: "/docs/ink", title: "Ink", icon: LinkIcon, text: "Chainable styling." },
         { to: "/docs/low-level", title: "Low Level API", icon: LayersIcon, text: "Parse markup into data and render it anywhere." },
         { to: "/docs/utilities", title: "Utilities", icon: WrenchIcon, text: "Strip, measure, and convert styles." },
-        { to: "/docs/types", title: "Types", icon: BracesIcon, text: "TypeScript definitions." },
+        { to: "/docs/types", title: "Types", icon: ShieldCheckIcon, text: "TypeScript definitions." },
       ],
     },
     {

@@ -64,8 +64,7 @@
       aspect-ratio: 1;
       width: 48px;
       padding: 4px;
-      opacity: 0.1;
-      color: var(--primary);
+      color: var(--outline-low);
       z-index: 0;
       transition: 250ms;
     }
@@ -79,7 +78,7 @@
       background: var(--surface-highest);
       border-left-color: var(--primary);
       .watermark {
-        opacity: 0.5;
+        color: var(--outline);
       }
     }
 
