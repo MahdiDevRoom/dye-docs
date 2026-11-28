@@ -66,8 +66,9 @@
     display: flex;
     justify-content: center;
     gap: 16px;
+    
     button {
-      height: 90px;
+      height: 120px;
       gap: 16px;
       flex-direction: column;
     }

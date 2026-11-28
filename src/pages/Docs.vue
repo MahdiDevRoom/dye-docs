@@ -22,16 +22,14 @@
         { to: "/docs/imports", title: "Imports", icon: PackageIcon, text: "What to import, including the TypeScript types." },
         { to: "/docs/quick-start", title: "Quick Start", icon: RocketIcon, text: "Print your first styled output in a minute." },
       ],
-    },
-    {
+    }, {
       title: "Learn the syntax",
       items: [
         { to: "/docs/markup", title: "Markup", icon: CodeIcon, text: "Tags, effects, and how styles accumulate." },
         { to: "/docs/aliases", title: "Aliases", icon: TagsIcon, text: "Short names like error, warning, info, and success." },
         { to: "/docs/colors", title: "Colors", icon: SwatchBookIcon, text: "Named colors, RGB, and 256-color codes." },
       ],
-    },
-    {
+    }, {
       title: "API reference",
       items: [
         { to: "/docs/render", title: "Render", icon: PlayIcon, text: "The all-in-one Dye.render()." },
@@ -58,7 +56,7 @@
 
 <template>
   <section>
-    <Text as="h2" variant="headline" shape> Documentation </Text>
+    <Text as="h2" variant="headline" shape> Document </Text>
 
     <Text as="p">
       Everything you need to style terminal text with <strong>Dye</strong>. New here? Follow
@@ -90,7 +88,7 @@
     </ul>
 
     <Text as="p">
-      Dye is released under the MIT License. This documentation site is licensed under GPLv3.
+      Dye is released under the MIT License.
     </Text>
   </section>
 </template>

@@ -10,7 +10,7 @@
   const route = useRoute();
   const onScroll = () => panel.close();
 
-  const DocsRoute = computed(() => route.matched.some((r) => r.name === "docs"))
+  const DocsRoute = computed(() => route.matched.some((r) => r.name === "docs-layout"))
 
   onMounted(() => window.addEventListener("scroll", onScroll, { passive: true }));
   onBeforeUnmount(() => window.removeEventListener("scroll", onScroll));
@@ -20,13 +20,15 @@
   <div class="panel" :class="{ active: panel.panel }">
     <div @click="panel.close" class="bg"></div>
     <div class="fg">
-      <Nav class="nav" @click="panel.close" as="div" #default="{ item }">
-        <div class="button" :class="{ current: item.current }">
-          <span> {{ item.label }} </span>
-          <component :is="item.icon" size="24px" />
-        </div>
-      </Nav>
-      <Wave v-if="DocsRoute"/>
+      <div class="header">
+        <Nav class="nav" @click="panel.close" as="div" #default="{ item }">
+          <div class="button" :class="{ current: item.current }">
+            <span> {{ item.label }} </span>
+            <component :is="item.icon" size="24px" />
+          </div>
+        </Nav>
+        <Wave v-if="DocsRoute"/>
+      </div>
       <Lessons v-if="DocsRoute"/>
     </div>
   </div>
@@ -59,7 +61,7 @@
       transition: 250ms;
       background: var(--surface-high);
       border-radius: 12px 12px 0 0;
-      border-top: 2px solid var(--surface-highest);
+      border-top: 2px solid var(--outline-low);
       padding-bottom: 70px;
       translate: 0 100%;
       z-index: 9;
@@ -78,6 +80,14 @@
       }
 
     }
+  }
+  
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: inherit;
+    padding-bottom: 8px;
   }
 
   .nav {

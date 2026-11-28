@@ -13,10 +13,10 @@ const router = createRouter({
     }, 
     {
       path: "/docs",
-      name: "docs", 
-      component: ()=> import("@/layouts/DocsLayouts.vue"), 
+      name: "docs-layout",   
+      component: ()=> import("@/layouts/DocsLayout.vue"), 
       children: [
-        { path: "/docs",                                    component: ()=> import("@/pages/Docs.vue") },
+        { path: "/docs",              name: "docs",         component: ()=> import("@/pages/Docs.vue") },
         { path: "/docs/overview",     name: "overview",     component: ()=> import("@/pages/docs/Overview.vue") },
         { path: "/docs/installation", name: "installation", component: ()=> import("@/pages/docs/Installation.vue") },
         { path: "/docs/quick-start",  name: "quick-start",  component: ()=> import("@/pages/docs/QuickStart.vue") },

@@ -37,6 +37,7 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
+    z-index: 2;
 
     .title {
       font-size: 120px;
@@ -46,7 +47,7 @@
   }
   .shapes{
     position: fixed;
-    z-index: 2;
+    z-index: 1;
     display: flex;
     padding: 16px;
     gap: 16px;

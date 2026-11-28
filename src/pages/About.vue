@@ -4,11 +4,15 @@ import Code from "@/components/Code.vue";
   import CodeBlock from "@/components/CodeBlock.vue";
   import Text from "@/components/Text.vue";
   import Wave from "@/components/Wave.vue";
+  import Shape from "@/components/Shape.vue";
 </script>
 
 <template>
+  <div class="watermark">
+    <Shape v-for="i in 5" :key="i"/>
+  </div>
   <section>
-    <Text as="h2" variant="headline"> What is Dye? </Text>
+    <Text as="h2" variant="headline" shape> What is Dye? </Text>
 
     <Text as="p"> Dye is a small library for styling text in the terminal. </Text>
     <Text as="p">
@@ -28,23 +32,23 @@ import Code from "@/components/Code.vue";
   <Wave />
   <section>
 
-    <Text as="h3" variant="headline-small"> Principles </Text>
+    <Text as="h3" variant="headline" shape> Principles </Text>
 
-    <Text as="h4" variant="title"> Markup first </Text>
+    <Text as="h4" variant="title" shape shape-variant="secondary"> Markup first </Text>
 
     <Text as="p">
       Style and text live together, so a line reads the way it will look. A message with three colors is still one
       readable string.
     </Text>
 
-    <Text as="h4" variant="title"> One engine </Text>
+    <Text as="h4" variant="title" shape shape-variant="secondary"> One engine </Text>
 
     <Text as="p">
       <Code src="Dye"/> (markup) and <Code src="Ink"/> (chains) share the same colors, effects and rendering pipeline. Pick whichever fits your
       code, or mix them.
     </Text>
 
-    <Text as="h4" variant="title"> Small surface </Text>
+    <Text as="h4" variant="title" shape shape-variant="secondary"> Small surface </Text>
 
     <Text as="p">
       <Code src="Dye"/> is a single class of static methods, with no instances and no setup. There is nothing to configure before
@@ -52,14 +56,14 @@ import Code from "@/components/Code.vue";
       first call.
     </Text>
 
-    <Text as="h4" variant="title"> Quiet on bad input </Text>
+    <Text as="h4" variant="title" shape shape-variant="secondary"> Quiet on bad input </Text>
 
     <Text as="p">
       Unknown attributes and invalid colors are ignored. They are not thrown and not logged. A typo in a style should
       never crash your CLI.
     </Text>
 
-    <Text as="h4" variant="title"> Open to other renderers </Text>
+    <Text as="h4" variant="title" shape shape-variant="secondary"> Open to other renderers </Text>
 
     <Text as="p">
       The low-level API exposes plain data (an AST, then styled blocks), so you can render the same markup to ANSI,
@@ -69,7 +73,7 @@ import Code from "@/components/Code.vue";
   </section>
   <Wave />
   <section>
-    <Text as="h3" variant="headline-small"> Status </Text>
+    <Text as="h3" variant="headline" shape> Status </Text>
 
     <ul>
       <li><b>Current version:</b> 1.1.3</li>
@@ -87,7 +91,7 @@ import Code from "@/components/Code.vue";
   <Wave />
 
   <section>
-    <Text> About as="h3" variant="headline-small"this site </Text>
+    <Text> About as="h3" variant="headline" shapethis site </Text>
 
     <Text as="p">
       The documentation site is built with <b>Vue 3</b>, <b>Vite</b> and <b>Vue Router</b>. Code samples are highlighted with
@@ -102,7 +106,7 @@ import Code from "@/components/Code.vue";
   <Wave />
 
   <section>
-    <Text as="h3" variant="headline-small"> Author </Text>
+    <Text as="h3" variant="headline" shape> Author </Text>
 
     <Text>Dye is written and maintained by <b>MahdiDevRoom</b>. </Text>
 
@@ -115,10 +119,24 @@ import Code from "@/components/Code.vue";
   <Wave />
 
   <section>
-    <Text as="h3" variant="headline-small"> License </Text>
+    <Text as="h3" variant="headline" shape> License </Text>
 
     <Text as="p">
       Dye is released under the <b>MIT License</b>. You are free to use it in personal and commercial projects.
     </Text>
   </section>
 </template>
+
+<style scoped>
+  .watermark {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    gap: 16px;
+    color: var(--primary-container);
+    
+    &>* {
+      width: 24px;
+    }
+  }
+</style>

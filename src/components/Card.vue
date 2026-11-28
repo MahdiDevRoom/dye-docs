@@ -65,7 +65,7 @@
       width: 48px;
       padding: 4px;
       color: var(--outline-low);
-      z-index: 0;
+      z-index: -1;
       transition: 250ms;
     }
   }
