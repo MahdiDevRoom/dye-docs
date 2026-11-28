@@ -10,7 +10,7 @@
 
   const navs = computed(() => [
     { label: "Home", to: "/", current: route.name === "home", icon: HomeIcon },
-    { label: "Docs", to: "/docs", current: route.matched.some((r) => r.name === "docs"), icon: BookAIcon, },
+    { label: "Docs", to: "/docs", current: route.matched.some((r) => r.name === "docs-layout"), icon: BookAIcon, },
     { label: "About", to: "/about", current: route.name === "about", icon: UserStarIcon, },
     { label: "Github", href: "https://github.com/MahdiDevRoom", target: "_blank", icon: GithubIcon },
   ]);
