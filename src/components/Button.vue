@@ -39,7 +39,7 @@
     cursor: pointer;
     top: calc(var(--outline-width) * -2);
     transition: 150ms;
-    gap: 4px;
+    gap: 12px;
 
     &:active {
       top: 0;

@@ -3,6 +3,7 @@
   import Text from "@/components/Text.vue";
   import Anchor from "@/components/Anchor.vue";
   import Wave from "@/components/Wave.vue";
+  import Shape from "@/components/Shape.vue";
 </script>
 
 <template>
@@ -17,10 +18,18 @@
       <Anchor to="/about">About</Anchor> -
       <Anchor href="https://github.com/MahdiDevRoom/dye" target="_blank">GitHub</Anchor>
     </Text>
-    <Wave class="wave" color="var(--surface)" />
+    
+    <Wave class="wave" color="var(--surface-high)" />
+    
     <Text as="p" variant="body-smaall">
-      <ScaleIcon size="18px" /> under the MIT License
+      <ScaleIcon size="18px" /> Under the MIT License
     </Text>
+    
+    <Wave class="wave" color="var(--surface-high)" />
+    
+    <div class="watermark">
+      <Shape size="24px" v-for="j in 3" :key="j" />
+    </div>
   </footer>
 </template>
 
@@ -39,6 +48,14 @@
     .wave {
       width: 100%;
       max-width: 300px;
+    }
+
+    .watermark {
+      display: flex;
+      justify-content: space-between;
+      padding: 16px;
+      gap: 16px;
+      color: var(--outline-low);
     }
   }
 </style>

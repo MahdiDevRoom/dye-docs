@@ -12,6 +12,7 @@
   "dependencies": {
     "@lucide/vue": "^1.79.0",
     "@tanstack/highlight": "^1.2.12",
+    "dye": "github:mahdidevroom/dye",
     "pinia": "^4.1.0",
     "pinia-plugin-persistedstate": "^4.7.1",
     "vue": "^3.5.44",

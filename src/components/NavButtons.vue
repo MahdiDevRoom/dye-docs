@@ -8,6 +8,7 @@
   const route = useRoute();
 
   const list = {
+    "docs":         { link: "/docs",              label: "Docs" },
     "overview":     { link: "/docs/overview",     label: "Overview" },
     "installation": { link: "/docs/installation", label: "Installation" },
     "quick-start":  { link: "/docs/quick-start",  label: "Quick Start" },
